@@ -2,25 +2,16 @@
 
 (function () {
 
-	var ele = document.getElementById('username');
-	ele.innerHTML = 'Freddy Junior';
+	var $sidebarAndWrapper = $('#sidebar,#wrapper');
 
-	var main = document.getElementById('main');
-	main.onmouseenter = function () {
-		// Firefox version
-		//main.style = 'background-color: #888;';
-
-		// IE & Google Chrome version
-		main.style['background-color'] = '#888';
-
-	};
-	main.onmouseleave = function () {
-		// Firefox Version
-		//main.style = '';
-
-		// IE & Google Chrome version
-		main.style['background-color'] = '';
-
-	};
+	$('#sidebarToggle').on('click', function () {
+		$sidebarAndWrapper.toggleClass('hide-sidebar');
+		if ($sidebarAndWrapper.hasClass('hide-sidebar')) {
+			$(this).text('Show Sidebar');
+		} else {
+			$(this).text('Hide Sidebar');
+		}
+	});
+	
 
 })();
