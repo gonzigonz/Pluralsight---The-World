@@ -22,7 +22,8 @@ namespace TheWorld
         {
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync($"Hello World: {context.Request.Path}");
+                var html = $@"<!DOCTYPE html><html><head></head><body><h1>The World</h1><p>Path: {context.Request.Path}</p></body></html>";
+                await context.Response.WriteAsync(html);
             });
         }
 
