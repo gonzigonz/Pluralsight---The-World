@@ -1,7 +1,7 @@
 # Pluralsight - The World
+_December 2015_
 
-#### From the course: 
-**_Building a Web App with ASP.NET 5, MVC 6, EF7 and AngularJS_**
+**From the course: _Building a Web App with ASP.NET 5, MVC 6, EF7 and AngularJS_**
 
 _By Shawn Wildermuth_
 
