@@ -14,7 +14,7 @@ namespace TheWorld
 		public Startup(IApplicationEnvironment appEnv)
 		{
 			var builder = new ConfigurationBuilder()
-				.SetBasePath("")
+				.SetBasePath(appEnv.ApplicationBasePath)
 				.AddJsonFile("config.json")
 				.AddEnvironmentVariables();
 

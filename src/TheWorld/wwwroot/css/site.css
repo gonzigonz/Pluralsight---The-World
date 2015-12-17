@@ -1,20 +1,5 @@
 /*site.css*/
 
-body {
-    font-family: sans-serif; 
-    font-size: 14px;
-	margin: 0;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-}
-
-input[type=text], input[type=password], textarea {
-    width: 150px;
-}
-
 #sidebar {
 	background: #2a2c36;
 	color: #eee;
