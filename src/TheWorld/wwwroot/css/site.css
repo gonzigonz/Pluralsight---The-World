@@ -37,21 +37,6 @@
 		transition: margin-left ease .25s;
 	}
 
-#main {
-    background-color: #eee;
-	padding: 4px;
-	margin: 0;
-}
-
-#footer {
-	width: 100%;
-	background-color: #222;
-	color: #eee;
-	padding: 8px 5px;
-	position: fixed;
-	bottom: 0;
-}
-
 .profile-picture {
 	max-width: 50px;
 	border: 1px solid #222;
