@@ -3,6 +3,7 @@ using TheWorld.Models;
 
 namespace TheWorld.Controllers.Api
 {
+	[Route("api/trips")]
 	public class TripController : Controller
     {
 		private IWorldRepository _worldRepo;
@@ -12,11 +13,17 @@ namespace TheWorld.Controllers.Api
 			_worldRepo = worldRepo;
 		}
 
-        [HttpGet("api/trips")]
+        [HttpGet("")]
         public JsonResult Get()
         {
 			var result = _worldRepo.GetAllTripsWithStops();
 			return Json(result);
         }
+
+		[HttpPost("")]
+		public JsonResult Post([FromBody]Trip newTrip)
+		{
+			return Json(true)
+;		}
     }
 }
