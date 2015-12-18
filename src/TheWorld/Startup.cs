@@ -7,6 +7,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Serialization;
 using TheWorld.Models;
 using TheWorld.Services;
+using TheWorld.ViewModels;
 
 namespace TheWorld
 {
@@ -55,6 +56,11 @@ namespace TheWorld
 		public void Configure(IApplicationBuilder app, WorldContextSeedData seedData, ILoggerFactory loggerFactory)
         {
 			loggerFactory.AddDebug(LogLevel.Warning);
+
+			AutoMapper.Mapper.Initialize(x => 
+			{
+				x.CreateMap<Trip, TripViewModel>().ReverseMap();
+			});
 
             app.UseStaticFiles();
 			app.UseMvc(config =>
