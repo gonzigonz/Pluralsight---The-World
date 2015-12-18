@@ -29,6 +29,7 @@ namespace TheWorld
 			services.AddMvc();
 
 			services.AddEntityFramework()
+				.AddSqlServer()
 				.AddDbContext<WorldContext>();
 
 #if DEBUG
