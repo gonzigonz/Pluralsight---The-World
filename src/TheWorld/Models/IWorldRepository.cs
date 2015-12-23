@@ -9,5 +9,6 @@ namespace TheWorld.Models
 		void AddTrip(Trip newTrip);
 		bool SaveAll();
 		Trip GetAllTripsByName(string tripName);
+		void AddStop(string tripName, Stop newStop);
 	}
 }
