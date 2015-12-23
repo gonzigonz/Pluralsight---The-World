@@ -1,10 +1,19 @@
 @model IEnumerable<TheWorld.Models.Trip>
 
-@{ 
+@{
 	ViewBag.Title = "Home";
 }
+@section Scripts {
+	<script src="~/lib/angular/angular.min.js"></script>
+	<script src="~/js/app-trips.js"></script>
+	<script src="~/js/tripscontroller.js"></script>
+}
 
-<div class="row">
+<div class="row" ng-app="app-trips">
+
+	<div ng-controller="tripsController as vm" class="col-md-6 col-md-offset-3">
+		{{vm.name}}
+	</div>
 
 	<div class="col-md-6">
 		<h1>The World</h1>
@@ -20,7 +29,7 @@
 				<input class="form-control" />
 			</div>
 			<div class="form-group">
-				<input type="submit" value="Add" class="btn btn-success"/>
+				<input type="submit" value="Add" class="btn btn-success" />
 			</div>
 		</form>
 	</div>
@@ -29,7 +38,7 @@
 		<ul>
 			@foreach (var trip in Model)
 			{
-				<li>@trip.Name (@trip.Created.ToShortDateString())</li >
+				<li>@trip.Name (@trip.Created.ToShortDateString())</li>
 			}
 		</ul>
 	</div>
