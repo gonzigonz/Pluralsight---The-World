@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Mvc;
 
-namespace TheWorld.Controllers
+namespace TheWorld.Controllers.Auth
 {
 	public class AuthController: Controller
     {
