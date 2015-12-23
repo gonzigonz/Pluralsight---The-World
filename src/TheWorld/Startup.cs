@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,6 +36,14 @@ namespace TheWorld
 					opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 				});
 
+			services.AddIdentity<WorldUser, IdentityRole>(config =>
+			{
+				config.User.RequireUniqueEmail = true;
+				config.Password.RequiredLength = 6;
+				config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+			})
+			.AddEntityFrameworkStores<WorldContext>();
+
 			services.AddLogging();
 
 			services.AddEntityFramework()
@@ -58,13 +67,16 @@ namespace TheWorld
         {
 			loggerFactory.AddDebug(LogLevel.Warning);
 
+			app.UseStaticFiles();
+
+			app.UseIdentity();
+
 			AutoMapper.Mapper.Initialize(config => 
 			{
 				config.CreateMap<Trip, TripViewModel>().ReverseMap();
 				config.CreateMap<Stop, StopViewModel>().ReverseMap();
 			});
 
-            app.UseStaticFiles();
 			app.UseMvc(config =>
 			{
 				config.MapRoute(
@@ -73,7 +85,7 @@ namespace TheWorld
 					defaults: new { controller = "App", action = "Index" }
 					);
 			});
-
+			
 			await seedData.EnsureSeedDataAsync();
         }
 
