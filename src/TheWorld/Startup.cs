@@ -43,6 +43,7 @@ namespace TheWorld
 
 			services.AddTransient<WorldContextSeedData>();
 			services.AddScoped<IWorldRepository, WorldRepository>();
+			services.AddScoped<CoordService>();
 
 #if DEBUG
 			services.AddScoped<IMailService, DebugMailService>();
