@@ -69,7 +69,24 @@ namespace TheWorld.Models
 				return null;
 			}
 
-}
+		}
+
+		public IEnumerable<Trip> GetUserTripsWithStops(string name)
+		{
+			try
+			{
+				return _context.Trips
+					.Include(t => t.Stops)
+					.Where(t => t.UserName == name)
+					.OrderBy(t => t.Name)
+					.ToList();
+			}
+			catch (Exception e)
+			{
+				_logger.LogError("Could not get trips with stops from database", e);
+				return null;
+			}
+		}
 
 		public bool SaveAll()
 		{
