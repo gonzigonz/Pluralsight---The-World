@@ -41,6 +41,7 @@
 	max-width: 50px;
 	border: 1px solid #222;
 	padding: 3px;
+	display: block;
 }
 
 .menu {
