@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Mvc;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Serialization;
+using System.Net;
+using System.Threading.Tasks;
 using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
@@ -48,6 +51,23 @@ namespace TheWorld
 				config.Password.RequiredLength = 6;
 				config.Password.RequireNonLetterOrDigit = false;
 				config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+				config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+				{
+					OnRedirectToLogin = ctx =>
+					{
+						if (ctx.Request.Path.StartsWithSegments("/api") &&
+						ctx.Response.StatusCode == (int)HttpStatusCode.OK)
+						{
+							ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+						}
+						else
+						{
+							ctx.Response.Redirect(ctx.RedirectUri);
+						}
+						
+						return Task.FromResult(0);
+					}
+				};
 			})
 			.AddEntityFrameworkStores<WorldContext>();
 
