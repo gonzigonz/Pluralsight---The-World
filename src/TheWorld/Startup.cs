@@ -57,9 +57,10 @@ namespace TheWorld
         {
 			loggerFactory.AddDebug(LogLevel.Warning);
 
-			AutoMapper.Mapper.Initialize(x => 
+			AutoMapper.Mapper.Initialize(config => 
 			{
-				x.CreateMap<Trip, TripViewModel>().ReverseMap();
+				config.CreateMap<Trip, TripViewModel>().ReverseMap();
+				config.CreateMap<Stop, StopViewModel>().ReverseMap();
 			});
 
             app.UseStaticFiles();
