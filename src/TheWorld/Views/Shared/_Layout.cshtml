@@ -14,14 +14,22 @@
 
 <body>
 	<div id="sidebar">
-
-		<img src="~/img/myprofile.png" alt="Gonzalo profile picture." class="profile-picture" />
-		<span><em id="username">Gonzalo Lucero</em> is a really great guy and this is showing a really long string.</span>
+		@if (User.Identity.IsAuthenticated)
+		{
+			<img src="~/img/myprofile.png" alt="Gonzalo profile picture." class="profile-picture" />
+			<span><em id="username">@User.Identity.Name</em> is a really great guy and this is showing a really long string.</span>
+		}
+		
 
 		<ul class="nav">
 			<li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
 			<li><a asp-controller="App" asp-action="About">About</a></li>
 			<li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+		@if (User.Identity.IsAuthenticated)
+		{
+			<li><a asp-controller="App" asp-action="Trips">My Trips</a></li>
+			<li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+		}
 		</ul>
 	</div>
 
