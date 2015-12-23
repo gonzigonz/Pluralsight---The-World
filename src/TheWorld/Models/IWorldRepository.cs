@@ -8,8 +8,8 @@ namespace TheWorld.Models
 		IEnumerable<Trip> GetAllTripsWithStops();
 		void AddTrip(Trip newTrip);
 		bool SaveAll();
-		Trip GetAllTripsByName(string tripName);
-		void AddStop(string tripName, Stop newStop);
+		Trip GetTripsByName(string tripName, string userName);
+		void AddStop(string tripName, string userName, Stop newStop);
 		IEnumerable<Trip> GetUserTripsWithStops(string name);
 	}
 }
