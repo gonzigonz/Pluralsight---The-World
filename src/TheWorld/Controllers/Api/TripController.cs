@@ -39,9 +39,13 @@ namespace TheWorld.Controllers.Api
 
 					// Save to the Database
 					_logger.LogInformation("Attempting to save a new trip.");
+					_worldRepo.AddTrip(newTrip);
 
-					Response.StatusCode = (int)HttpStatusCode.Created;
-					return Json(Mapper.Map<TripViewModel>(newTrip));
+					if (_worldRepo.SaveAll())
+					{
+						Response.StatusCode = (int)HttpStatusCode.Created;
+						return Json(Mapper.Map<TripViewModel>(newTrip));
+					}
 				}
 			}
 			catch (Exception e)
