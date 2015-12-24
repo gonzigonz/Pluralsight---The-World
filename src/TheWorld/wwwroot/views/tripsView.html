@@ -8,7 +8,7 @@
 		<tr ng-repeat="trip in vm.trips">
 			<td>{{trip.name}}</td>
 			<td>{{trip.created | date: 'MM-dd-yyyy'}}</td>
-			<td><a href="#/editor" class="btn btn-sm btn-primary">Manage</a></td>
+			<td><a ng-href="#/editor/{{trip.name}}" class="btn btn-sm btn-primary">Manage</a></td>
 		</tr>
 	</table>
 

@@ -2,9 +2,21 @@
 	<a href="#/" class="btn btn-sm btn-default">
 		<i class="fa fa-angle-left"> Back</i>
 	</a>
-	<div class="col-md-6">
-		<h1>The World - {{vm.name}}</h1>
-		<p>This is an MVC view!</p>
+	<div class="col-md-3">
+		<h2>{{vm.tripName}}</h2>
+		<wait-cursor display-if="vm.isBusy"></wait-cursor>
+		<div class="alert alert-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+		
+		<table class="table table-responsive table-striped">
+			<tr>
+				<th>Location</th>
+				<th>Arrival</th>
+			</tr>
+			<tr ng-repeat="stop in vm.stops">
+				<td>{{stop.name}}</td>
+				<td>{{stop.date | date:shortDate}}</td>
+			</tr>
+		</table>
 
 		<form>
 			<div class="form-group">
@@ -20,7 +32,7 @@
 			</div>
 		</form>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-9">
 		<h2>The Map</h2>
 		
 	</div>
