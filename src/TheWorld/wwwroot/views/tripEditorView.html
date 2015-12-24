@@ -21,17 +21,24 @@
 			</tr>
 		</table>
 
-		<form>
+		<form novalidate name="newStopForm">
 			<div class="form-group">
 				<label>Date</label>
-				<input class="form-control" />
+				<input class="form-control" id="arrival" name="arrival" 
+					   ng-model="vm.newStop.arrival" 
+					   required 
+					   ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/" />
+				<span class="text-danger" ng-show="newStopForm.arrival.$error.required">Required</span>
+				<span class="text-danger" ng-show="newStopForm.arrival.$error.pattern">Must be in format of MM/DD/YYYY</span>
 			</div>
 			<div class="form-group">
 				<label>Location</label>
-				<input class="form-control" />
+				<input class="form-control" id="name" name="name" ng-model="vm.newStop.name" required ng-minlength="5"/>
+				<span class="text-danger" ng-show="newStopForm.name.$error.required">Required</span>
+				<span class="text-danger" ng-show="newStopForm.name.$error.minlength">Must be 5 characters or more</span>
 			</div>
 			<div class="form-group">
-				<input type="submit" value="Add" class="btn btn-success" />
+				<input type="submit" value="Add" class="btn btn-success" ng-disabled="newStopForm.$invalid" />
 			</div>
 		</form>
 	</div>
