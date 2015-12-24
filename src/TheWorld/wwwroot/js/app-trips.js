@@ -3,13 +3,13 @@
 	
 	"use strict";
 
-	angular.module("app-trips", ["simpleControls", "ng-route"])
+	angular.module("app-trips", ["simpleControls", "ngRoute"])
 		.config(function ($routeProvider) {
 
 			$routeProvider.when("/", {
 				controller: "tripsController",
 				controllerAs: "vm",
-				templateUrl: "/view/tripsView.html"
+				templateUrl: "/views/tripsView.html"
 			});
 
 			$routeProvider.otherwise({
