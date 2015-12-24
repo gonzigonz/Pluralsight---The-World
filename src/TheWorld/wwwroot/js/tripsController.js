@@ -25,13 +25,26 @@
 				vm.errorMessage = "Failed to load data: " + error;
 			})
 			.finally(function () {
-				vm.isBusy = false;
+				 vm.isBusy = false;
 			}); 
 
 		vm.addTrip = function () {
 
-			vm.trips.push({ name: vm.newTrip.name, created: new Date() })
-			vm.newTrip = {};
+			vm.isBusy = true;
+			vm.errorMessage = "";
+
+			$http.post("/api/trips", vm.newTrip)
+			.then(function (res) {
+				// Sucess
+				vm.trips.push(res.data);
+				vm.newTrip = {};
+			}, function (error) {
+				// Failure
+				vm.errorMessage = "Failed to save new trip: " + error;
+			})
+			.finally(function () {
+				vm.isBusy = false;
+			})
 		};
 
 	}
