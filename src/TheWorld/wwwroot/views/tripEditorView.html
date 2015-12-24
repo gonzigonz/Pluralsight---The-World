@@ -1,7 +1,10 @@
 <div>
-	<a href="#/" class="btn btn-sm btn-default">
-		<i class="fa fa-angle-left"> Back</i>
-	</a>
+	<div>
+		<a href="#/" class="btn btn-sm btn-default">
+			<i class="fa fa-angle-left"> Back</i>
+		</a>
+	</div>
+	
 	<div class="col-md-3">
 		<h2>{{vm.tripName}}</h2>
 		<wait-cursor display-if="vm.isBusy"></wait-cursor>
@@ -34,6 +37,6 @@
 	</div>
 	<div class="col-md-9">
 		<h2>The Map</h2>
-		
+		<div id="map"></div>
 	</div>
 </div>

@@ -15,7 +15,8 @@
 		$http.get("/api/trips/" + vm.tripName + "/stops")
 			.then(function (res) {
 				// Success
-				angular.copy(res.data, vm.stops)
+				angular.copy(res.data, vm.stops);
+				_showMap(vm.stops);
 			}, function (err) {
 				// Failure
 				vm.errorMessage = "Failed to load stops: " + err;
@@ -24,5 +25,27 @@
 				vm.isBusy = false
 			});
 	};
+
+	function _showMap(stops) {
+
+		if (stops && stops.length > 0) {
+
+			var mappedStops = _.map(stops, function (item) {
+				return {
+					lat: item.latitude,
+					long: item.longitude,
+					info: item.name
+				};
+			});
+
+			// Show Map
+			travelMap.createMap({
+				stops: mappedStops,
+				selector: "#map",
+				currentStop: 0,
+				initialZoom: 3
+			});
+		}
+	}
 
 })();

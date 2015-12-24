@@ -58,3 +58,8 @@
 		.menu li a {
 			color: #eee;
 		}
+
+#map {
+	width: 100%;
+	height: 600px;
+}
