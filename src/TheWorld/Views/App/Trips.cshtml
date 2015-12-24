@@ -1,5 +1,3 @@
-@model IEnumerable<TheWorld.Models.Trip>
-
 @{
 	ViewBag.Title = "My Trips";
 }
@@ -9,38 +7,11 @@
 	<script src="~/js/app-trips.js"></script>
 	<script src="~/js/tripscontroller.js"></script>
 	<script src="~/js/simplecontrols.js"></script>
+	<script src="~/js/tripeditorcontroller.js"></script>
 }
 
 <div class="row" ng-app="app-trips">
 
 	<div ng-view></div>
-
-	<div class="col-md-6">
-		<h1>The World As well</h1>
-		<p>This is an MVC view!</p>
-
-		<form>
-			<div class="form-group">
-				<label>Date</label>
-				<input class="form-control" />
-			</div>
-			<div class="form-group">
-				<label>Location</label>
-				<input class="form-control" />
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Add" class="btn btn-success" />
-			</div>
-		</form>
-	</div>
-	<div class="col-md-6">
-		<h2>The Map</h2>
-		<ul>
-			@foreach (var trip in Model)
-			{
-				<li>@trip.Name (@trip.Created.ToShortDateString())</li>
-			}
-		</ul>
-	</div>
 
 </div>
