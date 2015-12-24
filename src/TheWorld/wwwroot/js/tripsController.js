@@ -21,7 +21,8 @@
 
 		vm.addTrip = function () {
 
-			alert(vm.newTrip.name);
+			vm.trips.push({ name: vm.newTrip.name, created: new Date() })
+			vm.newTrip = {};
 		};
 
 	}

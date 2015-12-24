@@ -24,10 +24,14 @@
 		<form novalidate name="newTripForm" ng-submit="vm.addTrip()">
 			<div class="form-group">
 				<label>Trip Name</label>
-				<input type="text" class="form-control" id="name" name="name" ng-model="vm.newTrip.name"/>
+				<input type="text" class="form-control" id="name" name="name" ng-model="vm.newTrip.name" required ng-minlength="5" />
+				<span ng-show="newTripForm.name.$error.required" class="text-warning">Name is required.</span>
+				<span ng-show="newTripForm.name.$error.minlength" class="text-warning">Must be atleast 5 characters.</span>
 			</div>
 			<div class="form-group">
-				<input type="submit" value="Add" class="btn btn-sm btn-success"/>
+				<input type="submit" value="Add"
+					   class="btn btn-sm btn-success"
+					   ng-disabled="newTripForm.$invalid" />
 			</div>
 		</form>
 
