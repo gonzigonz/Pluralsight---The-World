@@ -22,7 +22,7 @@
 				_showMap(vm.stops);
 			}, function (err) {
 				// Failure
-				vm.errorMessage = "Failed to load stops: " + err;
+				vm.errorMessage = "Error Listing Stops (Server: " + err.data + ")";
 			})
 			.finally(function () {
 				vm.isBusy = false
@@ -40,6 +40,7 @@
 					vm.newStop = {};
 				}, function (err) {
 					// Failure
+					vm.errorMessage = "Add Request Failed (Server: " + err.data + ")";
 				})
 				.finally(function () {
 					vm.isBusy = false;

@@ -65,8 +65,9 @@ namespace TheWorld.Controllers.Api
 					var coordResult = await _coordService.Lookup(newStop.Name);
 					if (!coordResult.Success)
 					{
+						_logger.LogError(coordResult.Message);
 						Response.StatusCode = (int)HttpStatusCode.BadRequest;
-						Json(coordResult.Message);
+						return Json(coordResult.Message);
 					}
 
 					newStop.Latitude = coordResult.Latitude;

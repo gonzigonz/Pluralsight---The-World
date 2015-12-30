@@ -20,12 +20,18 @@ namespace TheWorld.Services
 			var result = new CoordServiceResult()
 			{
 				Success = false,
-				Message = "Undertermined failure while looking up coordinates"
+				Message = "Undertermined failure while looking up coordinates."
 			};
 
 			// Lookup Coordinates
 			var encodedName = WebUtility.UrlEncode(location);
 			var bingKey = Startup.Configuration["AppSettings:BingKey"];
+			if (bingKey == null)
+			{
+				result.Message = "No BingKey found on system. Could not lookup the location.";
+				return result;
+			}
+
 			var url = $"http://dev.virtualearth.net/REST/v1/Locations?q={encodedName}&key={bingKey}";
 
 			var client = new HttpClient();
