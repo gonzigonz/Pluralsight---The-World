@@ -3,6 +3,8 @@
 		"SiteEmailAddress": "me@theworld.com"
 	},
 	"Data": {
-		"WorldContextConnection":  "Server=(localdb)\\ProjectsV12;Database=TheWorld;Trusted_Connection=true;MultipleActiveResultSets=true;"
+		"WorldContextConnection2": "Server=(localdb)\\ProjectsV12;Database=TheWorld;Trusted_Connection=true;MultipleActiveResultSets=true;",
+		"WorldContextConnection1": "Server=localhost;Database=TheWorld;Trusted_Connection=true;MultipleActiveResultSets=true;",
+		"WorldContextConnection": "Server=10.211.55.4;Database=TheWorld;User Id=dev;Password=devpassword;MultipleActiveResultSets=true;"
 	}
 } 
