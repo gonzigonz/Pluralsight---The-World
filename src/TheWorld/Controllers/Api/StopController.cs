@@ -80,8 +80,14 @@ namespace TheWorld.Controllers.Api
 						Response.StatusCode = (int)HttpStatusCode.Created;
 						return Json(Mapper.Map<StopViewModel>(newStop));
 					}
+
+					return Json(true);
 				}
-				return Json(true);
+
+				_logger.LogError("Failed to save new stop - ModelState was invalid!");
+				Response.StatusCode = (int)HttpStatusCode.BadRequest;
+				return Json("Failed to save new stop. The data is invalid!");
+				
 			}
 			catch (Exception e)
 			{
